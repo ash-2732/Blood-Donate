@@ -4,13 +4,14 @@ import colors from 'colors';
 import morgan from 'morgan';
 import cors from 'cors';
 import connectDB from './config/db.js';
+import router from './routes/authRoutes.js';
+import inventoryRouter from './routes/inventoryRoutes.js';
 
 // load env variables
 dotenv.config();
 
 // connect to db
 connectDB();
-
 
 // rest object
 const app = express();
@@ -20,10 +21,15 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan('dev'));     // log requests to the console
 
-// set up a route
+// set up a route for testing
 app.get('/', (req, res) => {
     res.send('Hi i am a rest hahahaha');
 });
+
+// routes
+app.use('/api/v1/auth', router);
+app.use('/api/v1/inventory', inventoryRouter);
+
 // set port
 const PORT = process.env.PORT || 5000;
 
