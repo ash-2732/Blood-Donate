@@ -1,0 +1,6 @@
+npm i react-router-dom
+npm install antd --save
+npm install react-redux
+npm install @reduxjs/toolkit
+npm i axios
+npm i react-toastify
